@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Menu, X } from "lucide-react";
@@ -8,30 +8,59 @@ import { FaFacebookF, FaTwitter, FaInstagram, FaLinkedinIn } from "react-icons/f
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
+  const [showNav, setShowNav] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
+
+  // Handle scroll to hide/show navbar
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+
+      if (currentScrollY > lastScrollY && currentScrollY > 100) {
+        // Scrolling down
+        setShowNav(false);
+      } else {
+        // Scrolling up
+        setShowNav(true);
+      }
+
+      setLastScrollY(currentScrollY);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [lastScrollY]);
 
   return (
-    <nav className="fixed top-0 left-0 w-full z-50">
-      <div className="flex justify-between items-center px-[9%] py-10">
-        {/* Logo */}
-        <Link href="/" className="flex items-center">
-          <Image
-            src="/images/logo.svg"
-            alt="ThinkBig Logo"
-            width={160}
-            height={50}
-            className="object-contain"
-          />
-        </Link>
+    <>
+      {/* Main navbar */}
+      <nav
+        className={`fixed top-0 left-0 w-full z-50 transition-transform duration-300 ${
+          showNav ? "translate-y-0" : "-translate-y-full"
+        }`}
+      >
+        <div className="flex justify-between items-center px-[9%] py-10">
+          {/* Logo */}
+          <Link href="/" className="flex items-center">
+            <Image
+              src="/images/logo.svg"
+              alt="ThinkBig Logo"
+              width={160}
+              height={50}
+              className="object-contain"
+            />
+          </Link>
 
-        {/* Hamburger */}
-        <button
-          onClick={() => setOpen(true)}
-          className="flex items-center gap-2 bg-white rounded-full px-4 py-2 shadow-md"
-        >
-          <span className="text-sm text-[#3D3A37] font-medium">Menu</span>
-          <Menu size={25} className="text-[#3D3A37]" />
-        </button>
-      </div>
+          {/* Hamburger */}
+          <button
+            onClick={() => setOpen(true)}
+            className="flex items-center gap-2 bg-white rounded-full px-4 py-2 shadow-md"
+          >
+            <span className="text-sm text-[#3D3A37] font-medium">Menu</span>
+            <Menu size={25} className="text-[#3D3A37]" />
+          </button>
+        </div>
+      </nav>
 
       {/* Fullscreen Overlay Menu */}
       {open && (
@@ -48,7 +77,6 @@ export default function Navbar() {
                   className="mb-12"
                 />
 
-                {/* Big navigation links */}
                 <ul className="space-y-10 text-5xl md:text-6xl font-semibold tracking-wide">
                   <li>
                     <Link href="/" onClick={() => setOpen(false)}>Home</Link>
@@ -100,6 +128,6 @@ export default function Navbar() {
           </div>
         </div>
       )}
-    </nav>
+    </>
   );
 }
