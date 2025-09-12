@@ -41,11 +41,22 @@ export default function AboutSection() {
   const postTextWords = ["BUY", "|", "SELL", "|", "RENT", "|", "LEASE"];
 
   return (
-    <section ref={sectionRef} className="px-[10%] py-10 min-h-[60vh] bg-white">
+   <section
+  ref={sectionRef}
+  className="px-4 sm:px-8 md:px-[10%] pt-10 pb-6 sm:py-10 min-h-[60vh] bg-white"
+>
+
       {/* Typing Text */}
-      <div className="w-full mb-16">
+      <div className="w-full mb-10 sm:mb-16">
         <motion.h1
-          className="w-full text-4xl sm:text-4xl md:text-4xl lg:text-5xl font-bold text-justify leading-[1.4] tracking-tight whitespace-normal text-[#3D3A37]"
+          className="w-full 
+                     text-xl xs:text-2xl sm:text-3xl md:text-4xl lg:text-5xl 
+                     font-semibold sm:font-bold 
+                     text-left sm:text-justify 
+                     leading-relaxed sm:leading-[1.4] 
+                     tracking-tight 
+                     whitespace-normal 
+                     text-[#3D3A37]"
           initial={{ opacity: 0 }}
           animate={{ opacity: inView ? 1 : 0 }}
           transition={{ duration: 1 }}
@@ -56,7 +67,11 @@ export default function AboutSection() {
 
       {/* Post-typing text with per-word animation */}
       {typingDone && (
-        <motion.div className="flex text-justify justify-center items-center flex-wrap gap-x-6 text-center text-5xl sm:text-6xl font-bold text-[#3D3A37] tracking-wider">
+        <motion.div
+          className="flex flex-wrap justify-center items-center gap-4 sm:gap-x-6 
+                     text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl 
+                     font-bold text-[#3D3A37] tracking-wide sm:tracking-wider text-center"
+        >
           {postTextWords.map((word, index) => (
             <motion.span
               key={index}

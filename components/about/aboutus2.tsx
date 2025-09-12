@@ -11,20 +11,17 @@ export default function PropertyManagement() {
     if (!dragRef.current || !textRef.current || !wrapperRef.current) return;
 
     const lineRect = dragRef.current.parentElement!.getBoundingClientRect();
-    // clamp x within the line
     let newX = clientX - lineRect.left;
     newX = Math.max(0, Math.min(newX, lineRect.width));
 
     dragRef.current.style.left = `${newX}px`;
 
-    // percentage from right
     const percent = 1 - newX / lineRect.width;
     const hiddenWidth = textRef.current.scrollWidth - wrapperRef.current.offsetWidth;
     textRef.current.style.transform = `translateX(${-percent * hiddenWidth}px)`;
   };
 
   useEffect(() => {
-    // initialize at the right
     const lineWidth = dragRef.current?.parentElement?.offsetWidth || 0;
     if (dragRef.current) dragRef.current.style.left = `${lineWidth}px`;
 
@@ -44,7 +41,6 @@ export default function PropertyManagement() {
       isDown = false;
       if (dragRef.current) dragRef.current.style.cursor = "grab";
     };
-
     const handleTouchStart = (e: TouchEvent) => {
       isDown = true;
       offsetX = e.touches[0].clientX - (dragRef.current?.offsetLeft || 0);
@@ -75,29 +71,13 @@ export default function PropertyManagement() {
   }, []);
 
   return (
-    <main className="w-full bg-white text-[#3D3A37] px-6 md:px-12 py-12 font-sans overflow-hidden">
+    <main className="w-full bg-white text-[#3D3A37] px-4 md:px-12 py-8 md:py-12 font-sans overflow-hidden">
       {/* Headline Section */}
-      <section className="w-full text-left">
-        <h1
-          style={{
-            color: "#3D3A37",
-            fontFamily: "Clash Grotesk, sans-serif",
-            fontSize: "75px",
-            fontWeight: 500,
-            lineHeight: "102px",
-          }}
-        >
+      <section className="w-full text-left mb-8 md:mb-12">
+        <h1 className="text-2xl sm:text-3xl md:text-[75px] font-medium leading-snug sm:leading-snug md:leading-[102px] mb-4 md:mb-6">
           Everything for discovering Hyderabad&apos;s finest addresses.
         </h1>
-        <p
-          style={{
-            color: "#3D3A37",
-            fontFamily: "Clash Grotesk, sans-serif",
-            fontSize: "32px",
-            fontWeight: 300,
-            lineHeight: "47px",
-          }}
-        >
+        <p className="text-sm sm:text-base md:text-[32px] font-light leading-snug sm:leading-snug md:leading-[47px]">
           Think Big specializes in premium real estate, spanning curated luxury
           villas and residences, guided site visits, financing and legal
           facilitation, and post-handover concierge care.
@@ -105,24 +85,23 @@ export default function PropertyManagement() {
       </section>
 
       {/* Drag Section */}
-      <section className="w-full relative mt-12">
-    
+      <section className="w-full relative mt-8 md:mt-12">
         {/* Drag Line */}
         <div className="relative h-[2px] bg-gray-300 my-6">
           <div
             ref={dragRef}
-            className="absolute top-1/2 -translate-y-1/2 w-12 h-12 bg-black text-white rounded-full flex items-center justify-center text-xs cursor-grab select-none"
-            style={{ left: 0 }} // JS will update left inline
+            className="absolute top-1/2 -translate-y-1/2 w-10 h-10 sm:w-12 sm:h-12 bg-black text-white rounded-full flex items-center justify-center text-xs cursor-grab select-none"
+            style={{ left: 0 }}
           >
             Drag
           </div>
         </div>
 
         {/* Image + Sliding Text */}
-        <div className="flex items-start overflow-hidden mt-4">
-          <div className="flex-shrink-0 w-[287px] h-[201px] rounded-full overflow-hidden relative">
+        <div className="flex flex-col sm:flex-row items-start overflow-hidden mt-4">
+          <div className="flex-shrink-0 w-[180px] sm:w-[287px] h-[130px] sm:h-[201px] rounded-full overflow-hidden relative">
             <img
-              src="/images/Rectangle 1025.png"
+              src="/images/rectangle_1025.png"
               alt="Think Big"
               className="w-full h-full object-cover"
             />
@@ -130,13 +109,13 @@ export default function PropertyManagement() {
 
           <div
             ref={wrapperRef}
-            className="overflow-hidden relative flex-1 ml-6"
-            style={{ height: "180px" }}
+            className="overflow-hidden relative flex-1 mt-4 sm:mt-0 sm:ml-6"
+            style={{ height: "120px" }}
           >
             <div
               ref={textRef}
-              className="whitespace-nowrap text-[100px] font-[500] font-ClashGrotesk text-[#3D3A37]"
-              style={{ transform: "translateX(5.3641px)" }}
+              className="whitespace-nowrap text-[40px] sm:text-[100px] font-medium font-ClashGrotesk text-[#3D3A37]"
+              style={{ transform: "translateX(0px)" }}
             >
               Think Big focuses on high-end residences, offering expert curation,
               advisory and negotiations, loan and legal support, and ongoing
@@ -149,38 +128,25 @@ export default function PropertyManagement() {
         <div className="relative h-[2px] bg-gray-300 my-6"></div>
       </section>
 
-      {/* About Us Section (Figma specs applied) */}
+      {/* About Us Section */}
       <section className="w-full mt-6">
-        <h3 className="text-base font-semibold text-[#3D3A37] mb-4">About Us</h3>
-        <p
-          style={{
-            width: "1222px",
-            height: "270px",
-            flexShrink: 0,
-            color: "#3D3A37",
-            fontFamily: "Clash Grotesk, sans-serif",
-            fontSize: "44px",
-            fontStyle: "normal",
-            fontWeight: 400,
-            lineHeight: "107%", // ~63.84px
-          }}
-        >
+        <h3 className="text-base sm:text-lg font-semibold text-[#3D3A37] mb-4">About Us</h3>
+        <p className="text-sm sm:text-base md:text-[44px] font-normal leading-relaxed sm:leading-relaxed md:leading-[63.84px]">
           We are a leading company in the real estate sector, specializing in
           providing a wide range of services and solutions to meet the needs of
           buying, renting, and managing real estate assets.
         </p>
       </section>
 
-      {/* Timeline Section — exactly like second image: line spans between left/right padding,
-          three dots centered on the line, labels above each dot */}
+      {/* Timeline Section */}
       <section className="w-full mt-8">
-        <div className="relative w-full h-12 px-6"> {/* px-6 provides the left/right gutters */}
-          {/* Horizontal line (spans from left gutter to right gutter) */}
-          <div className="absolute left-6 right-6 top-1/2 h-[2px] bg-[#3D3A37] transform -translate-y-1/2" />
+        <div className="relative w-full h-12 px-2 sm:px-6">
+          {/* Horizontal line */}
+          <div className="absolute left-2 sm:left-6 right-2 sm:right-6 top-1/2 h-[2px] bg-[#3D3A37] transform -translate-y-1/2" />
 
-          {/* Left marker (near left gutter) */}
-          <div className="absolute left-6 top-1/2 transform -translate-y-1/2">
-            <div className="absolute -top-6 left-1/2 transform -translate-x-1/2 text-sm font-medium text-[#3D3A37]">
+          {/* Left marker */}
+          <div className="absolute left-2 sm:left-6 top-1/2 transform -translate-y-1/2">
+            <div className="absolute -top-6 left-1/2 transform -translate-x-1/2 text-xs sm:text-sm font-medium text-[#3D3A37]">
               Meaning
             </div>
             <div className="w-3 h-3 rounded-full bg-[#3D3A37]" />
@@ -188,34 +154,25 @@ export default function PropertyManagement() {
 
           {/* Center marker */}
           <div className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2">
-            <div className="absolute -top-6 left-1/2 transform -translate-x-1/2 text-sm font-medium text-[#3D3A37]">
+            <div className="absolute -top-6 left-1/2 transform -translate-x-1/2 text-xs sm:text-sm font-medium text-[#3D3A37]">
               Symbolism
             </div>
             <div className="w-3 h-3 rounded-full bg-[#3D3A37]" />
           </div>
 
-          {/* Right marker (near right gutter) */}
-          <div className="absolute right-6 top-1/2 transform -translate-y-1/2">
-             <div className="absolute -top-6 left-1/2 transform -translate-x-1/2 text-sm font-medium text-[#3D3A37] whitespace-nowrap">
-    360 Approach
-  </div>
+          {/* Right marker */}
+          <div className="absolute right-2 sm:right-6 top-1/2 transform -translate-y-1/2">
+            <div className="absolute -top-6 left-1/2 transform -translate-x-1/2 text-xs sm:text-sm font-medium text-[#3D3A37] whitespace-nowrap">
+              360 Approach
+            </div>
             <div className="w-3 h-3 rounded-full bg-[#3D3A37]" />
           </div>
         </div>
       </section>
 
-
-    <section className="w-full mt-12">
-        <p
-          style={{
-            width: "1222px",
-            color: "#3D3A37",
-            fontFamily: "Clash Grotesk, sans-serif",
-            fontSize: "60px",
-            fontWeight: 600,
-            lineHeight: "148%", // 96px
-          }}
-        >
+      {/* Final Section */}
+      <section className="w-full mt-12">
+        <p className="text-xl sm:text-2xl md:text-[60px] font-semibold leading-relaxed sm:leading-relaxed md:leading-[96px]">
           We are a leading company in the real estate sector, specializing in
           providing a wide range of services and solutions to meet the needs of
           buying, renting, and managing real estate assets.

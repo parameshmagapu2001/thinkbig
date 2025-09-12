@@ -5,23 +5,25 @@ import { motion } from "framer-motion";
 
 export default function Hero() {
   return (
-    <div className="bg-white p-2 sm:p-4 rounded-none sm:rounded-[0rem]">
-      <section className="relative w-full h-[90vh] sm:h-[94vh] rounded-[2rem] sm:rounded-[4rem] overflow-hidden">
-        {/* background image */}
+    <div className="bg-white p-0 sm:p-4">
+      <section className="relative w-full h-[70vh] sm:h-[94vh] rounded-none sm:rounded-[3rem] overflow-hidden">
+        {/* Background image with priority loading */}
         <Image
           src="/images/heroimg.svg"
           alt="Dream House"
           fill
           className="object-cover z-0"
           priority
+          sizes="100vw"
         />
-        {/* gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent z-10"></div>
+        
+        {/* Gradient overlay for better text visibility */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent z-10"></div>
 
-        {/* Centered text */}
-        <div className="absolute inset-0 flex items-center justify-center z-20">
+        {/* Centered text with responsive sizing */}
+        <div className="absolute inset-0 flex items-center justify-center px-4 sm:px-0 z-20">
           <motion.h1
-            initial={{ y: -50, opacity: 0 }}
+            initial={{ y: -40, opacity: 0 }}
             whileInView={{ y: 0, opacity: 1 }}
             transition={{
               type: "spring",
@@ -30,9 +32,12 @@ export default function Hero() {
               duration: 0.8,
             }}
             viewport={{ once: false, amount: 0.3 }}
-            className="text-white text-center text-5xl sm:text-6xl font-bold leading-snug drop-shadow-lg max-w-[100%] sm:max-w-3xl mt-20 sm:mt-28"
+            className="text-white text-center 
+                       text-3xl xs:text-4xl sm:text-5xl lg:text-6xl 
+                       font-bold leading-tight sm:leading-snug drop-shadow-lg 
+                       max-w-full sm:max-w-3xl px-2"
           >
-           Real Estate, Simplified!
+            Real Estate, Simplified!
           </motion.h1>
         </div>
       </section>

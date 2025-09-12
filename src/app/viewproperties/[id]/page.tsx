@@ -23,7 +23,7 @@ const properties: Property[] = [
     beds: "3 & 4 BHK Luxury Apartments",
     area: "4055 – 5045 Sq.Ft",
     price: "₹20,80,000",
-    image: "/images/Lansum Encanto .svg",
+    image: "/images/lansumencanto.jpg",
     floorPlan: "/images/image 6.svg",
   },
   {
@@ -33,7 +33,7 @@ const properties: Property[] = [
     beds: "2, 3 BHK & 4 BHK Luxury Apartments",
     area: "2765 - 4205 SFT.",
     price: "₹18,50,000",
-    image: "/images/R One Diamond Towers .svg",
+    image: "/images/r.svg",
     floorPlan: "/images/image 6.svg",
   },
   {
@@ -43,7 +43,7 @@ const properties: Property[] = [
     beds: "4 & 5 BHK Residences",
     area: "3800 - 6610 SFT.",
     price: "₹25,00,000",
-    image: "/images/Palais Royale .svg",
+    image: "/images/palaisroyale.jpg",
     floorPlan: "/images/image 6.svg",
   },
   {
@@ -53,7 +53,7 @@ const properties: Property[] = [
     beds: "3.5 & 4 BHK Apartment",
     area: "3315 SFT. & 3575 SFT.",
     price: "₹22,30,000",
-    image: "/images/Evania by AVR  .svg",
+    image: "/images/e.svg",
     floorPlan: "/images/image 6.svg",
   },
   {
@@ -63,7 +63,7 @@ const properties: Property[] = [
     beds: "4 & 5 BHK Ultra Luxurious Villas",
     area: "300 to 940 Sq. Yards",
     price: "₹35,00,000",
-    image: "/images/Vaishnoi Southwood .svg",
+    image: "/images/vaishnoisouthwood.jpg",
     floorPlan: "/images/image 6.svg",
   },
   {
@@ -73,7 +73,7 @@ const properties: Property[] = [
     beds: "3.5 & 4 BHK Apartments",
     area: "3315 SFT. - 3575 SFT.",
     price: "₹21,75,000",
-    image: "/images/CasaGrand Hanford  .svg",
+    image: "/images/c.svg",
     floorPlan: "/images/image 6.svg",
   },
 ];

@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 export default function Aboutus() {
   return (
-    <section className="relative h-[500px] sm:h-[600px] md:h-[700px] w-full rounded-2xl overflow-hidden flex items-end">
+    <section className="relative h-[400px] sm:h-[500px] md:h-[700px] w-full rounded-2xl overflow-hidden flex items-end">
       {/* Background Image */}
       <img
         src="/images/villa-luxury.jpg"
@@ -16,13 +16,13 @@ export default function Aboutus() {
       <div className="absolute inset-0 bg-black/20"></div>
 
       {/* Content Row */}
-      <div className="relative z-10 flex justify-between w-full px-8 md:px-16 pb-12">
+      <div className="relative z-10 flex flex-col md:flex-row justify-between w-full px-4 sm:px-8 md:px-16 pb-8 sm:pb-12">
         <motion.h1
           initial={{ opacity: 0, x: -20 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-white text-3xl md:text-5xl font-bold max-w-xl drop-shadow-lg"
+          className="text-white text-xl sm:text-2xl md:text-5xl font-bold max-w-full md:max-w-xl drop-shadow-lg mb-4 md:mb-0"
         >
           About Think Big Property Management
         </motion.h1>
@@ -31,12 +31,11 @@ export default function Aboutus() {
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="text-white text-base md:text-lg font-semibold max-w-lg text-right drop-shadow-md"
+          className="text-white text-sm sm:text-base md:text-lg font-semibold max-w-full md:max-w-lg text-left md:text-right drop-shadow-md"
         >
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
         </motion.p>
       </div>
     </section>
-    
   );
 }

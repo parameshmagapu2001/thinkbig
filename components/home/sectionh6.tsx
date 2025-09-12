@@ -31,11 +31,18 @@ const CardsSection: React.FC = () => {
   return (
     <section className="w-full bg-white py-10">
       {/* flex container with hidden scrollbars */}
-      <div className="container mx-auto flex gap-6 overflow-x-auto no-scrollbar">
+      <div className="container mx-auto flex gap-6 overflow-x-auto no-scrollbar px-4">
         {cards.map((card, index) => (
           <div
             key={card.id}
-            className="relative min-w-[1200px] h-[520px] rounded-3xl overflow-hidden flex-shrink-0"
+            className="
+              relative
+              min-w-full h-[360px]           /* mobile */
+              sm:min-w-[600px] sm:h-[400px]  /* tablet */
+              lg:min-w-[900px] lg:h-[480px]  /* laptop */
+              xl:min-w-[1200px] xl:h-[520px] /* desktop */
+              rounded-3xl overflow-hidden flex-shrink-0
+            "
           >
             {/* Background image */}
             <Image
@@ -49,24 +56,24 @@ const CardsSection: React.FC = () => {
             <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
 
             {/* Top text */}
-            <div className="absolute top-6 left-6 pr-6">
-              <h2 className="text-white text-3xl md:text-4xl font-semibold leading-snug">
+            <div className="absolute top-4 left-4 pr-4 sm:top-6 sm:left-6 sm:pr-6">
+              <h2 className="text-white text-xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold leading-snug">
                 {card.title}
               </h2>
             </div>
 
             {/* Bottom text */}
-            <div className="absolute bottom-6 left-6 right-6 flex justify-between items-end">
-              <p className="text-white text-base md:text-lg lg:text-xl max-w-[80%] leading-relaxed">
+            <div className="absolute bottom-4 left-4 right-4 sm:bottom-6 sm:left-6 sm:right-6 flex justify-between items-end">
+              <p className="text-white text-sm sm:text-base md:text-lg lg:text-xl max-w-[75%] leading-relaxed">
                 {card.description}
               </p>
 
               {/* Numbering */}
               <div className="flex items-center space-x-2">
-                <span className="w-12 h-12 flex items-center justify-center border border-white rounded-full text-white text-base md:text-lg">
+                <span className="w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 flex items-center justify-center border border-white rounded-full text-white text-sm sm:text-base md:text-lg">
                   {String(index + 1).padStart(2, "0")}
                 </span>
-                <span className="text-white/70 text-base md:text-lg">
+                <span className="text-white/70 text-sm sm:text-base md:text-lg">
                   / {String(cards.length).padStart(2, "0")}
                 </span>
               </div>

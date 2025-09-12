@@ -34,15 +34,18 @@ export default function InquiryForm() {
   };
 
   return (
-    <div className="bg-white text-[#3D3A37] p-6 rounded-xl">
-      <div className="space-y-4">
+    <div className="bg-white text-[#3D3A37] p-6 sm:p-8 md:p-10 rounded-2xl max-w-md mx-auto shadow-lg">
+      <h2 className="text-2xl sm:text-3xl font-semibold mb-6 text-center">
+        Send an Inquiry
+      </h2>
+      <div className="space-y-6">
         <input
           type="text"
           name="name"
           value={formData.name}
           onChange={handleInputChange}
           placeholder="Enter Name"
-          className="w-full border-b border-gray-300 pb-2 focus:outline-none"
+          className="w-full border-b border-gray-300 pb-2 text-base sm:text-lg focus:outline-none focus:border-[#3D3A37] transition"
         />
         <input
           type="email"
@@ -50,7 +53,7 @@ export default function InquiryForm() {
           value={formData.email}
           onChange={handleInputChange}
           placeholder="Enter Email"
-          className="w-full border-b border-gray-300 pb-2 focus:outline-none"
+          className="w-full border-b border-gray-300 pb-2 text-base sm:text-lg focus:outline-none focus:border-[#3D3A37] transition"
         />
         <input
           type="tel"
@@ -58,11 +61,11 @@ export default function InquiryForm() {
           value={formData.phone}
           onChange={handleInputChange}
           placeholder="Enter Phone Number"
-          className="w-full border-b border-gray-300 pb-2 focus:outline-none"
+          className="w-full border-b border-gray-300 pb-2 text-base sm:text-lg focus:outline-none focus:border-[#3D3A37] transition"
         />
         <button
           onClick={handleSubmit}
-          className="mt-4 w-full px-6 py-3 bg-[#3D3A37] text-white rounded-full hover:opacity-90 transition"
+          className="mt-6 w-full px-6 py-3 bg-[#3D3A37] text-white rounded-full hover:opacity-90 transition text-base sm:text-lg"
         >
           Send Inquiry →
         </button>
