@@ -2,11 +2,11 @@
 
 import React from "react";
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 
 type Direction = "top" | "right" | "left" | "bottom";
 
-const getVariants = (direction: Direction) => {
+const getVariants = (direction: Direction): Variants => {
   let hidden;
   switch (direction) {
     case "right":
@@ -29,7 +29,10 @@ const getVariants = (direction: Direction) => {
       x: 0,
       y: 0,
       opacity: 1,
-      transition: { duration: 1.5, ease: "easeOut" },
+      transition: {
+        duration: 1.5,
+        ease: [0.25, 0.1, 0.25, 1], // ✅ cubic-bezier (same as easeOut)
+      },
     },
   };
 };
@@ -38,7 +41,7 @@ export default function SignatureAndWhyThinkBig() {
   return (
     <section className="bg-white w-full">
       {/* ===== Signature Heading Section ===== */}
-      <div className="max-w-[1339px]  px-5 sm:px-6 md:px-15 py-24 text-left">
+      <div className="max-w-[1339px] px-5 sm:px-6 md:px-15 py-24 text-left">
         <h2
           className="text-[#3D3A37] font-medium text-[45px] sm:text-[65px] md:text-[93px] leading-[50px] sm:leading-[70px] md:leading-[102px]"
           style={{
@@ -56,8 +59,8 @@ export default function SignatureAndWhyThinkBig() {
 
       {/* ===== Animated Cards Grid Section ===== */}
       <div className="max-w-[1500px] mx-auto px-6 py-16">
-        {/* Grid of Cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10 justify-center items-center">
+          {/* Card 1 */}
           <motion.div
             variants={getVariants("left")}
             initial="hidden"
@@ -74,6 +77,7 @@ export default function SignatureAndWhyThinkBig() {
             />
           </motion.div>
 
+          {/* Card 2 */}
           <motion.div
             variants={getVariants("right")}
             initial="hidden"
@@ -89,6 +93,7 @@ export default function SignatureAndWhyThinkBig() {
             </p>
           </motion.div>
 
+          {/* Card 3 */}
           <motion.div
             variants={getVariants("left")}
             initial="hidden"
@@ -104,6 +109,7 @@ export default function SignatureAndWhyThinkBig() {
             </p>
           </motion.div>
 
+          {/* Card 4 */}
           <motion.div
             variants={getVariants("top")}
             initial="hidden"
@@ -120,6 +126,7 @@ export default function SignatureAndWhyThinkBig() {
             />
           </motion.div>
 
+          {/* Card 5 */}
           <motion.div
             variants={getVariants("top")}
             initial="hidden"
@@ -136,6 +143,7 @@ export default function SignatureAndWhyThinkBig() {
             />
           </motion.div>
 
+          {/* Card 6 */}
           <motion.div
             variants={getVariants("right")}
             initial="hidden"

@@ -78,21 +78,25 @@ const properties: Property[] = [
   },
 ];
 
+
+
 // ✅ For static export
 export function generateStaticParams() {
   return properties.map((p) => ({ id: p.id.toString() }));
 }
 
 interface PropertyDetailPageProps {
-  params: { id: string };
+  params: Promise<{ id: string }>; // 👈 params is a Promise now
 }
 
-export default function PropertyDetailPage({ params }: PropertyDetailPageProps) {
-  const property = properties.find((p) => p.id.toString() === params.id);
+export default async function PropertyDetailPage({ params }: PropertyDetailPageProps) {
+  const { id } = await params; // 👈 must await
+
+  const property = properties.find((p) => p.id.toString() === id);
   if (!property) return notFound();
 
   return (
-    <div className="bg-[#333333] min-h-screen text-white px-4 md:px-[6%] pt-20 pb-10 space-y-10">
+    <div className="bg-[#333333] min-h-screen text-white px-4 md:px-[6%] pt-50 pb-10 space-y-10">
       {/* Breadcrumb */}
       <p className="text-sm mb-6">
         Home &gt; Properties &gt;{" "}
@@ -113,7 +117,7 @@ export default function PropertyDetailPage({ params }: PropertyDetailPageProps) 
             <p className="text-xl md:text-2xl font-bold mt-4">
               {property.price}
             </p>
-            <p className="text-xs md:text-sm opacity-80">Min lot Size</p>
+            <p className="text-xs md:text-sm opacity-80">Starting Price</p>
           </div>
 
           <button className="mt-6 flex items-center justify-center gap-2 px-4 md:px-6 py-3 bg-white text-[#3D3A37] rounded-full font-medium hover:bg-gray-200 transition">
@@ -168,19 +172,19 @@ export default function PropertyDetailPage({ params }: PropertyDetailPageProps) 
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-sm">
               <div>
                 <p className="opacity-70">🏠 Size</p>
-                <p className="font-semibold">1000 Sq Ft</p>
+                <p className="font-semibold">{property.area}</p>
               </div>
               <div>
-                <p className="opacity-70">💧 Feature 3</p>
-                <p>Lorem Ipsum</p>
+                <p className="opacity-70">🛏 Bedrooms</p>
+                <p className="font-semibold">{property.beds}</p>
               </div>
               <div>
                 <p className="opacity-70">🛣 Road Approach</p>
                 <p className="font-semibold">100 Meters</p>
               </div>
               <div>
-                <p className="opacity-70">⚡ Feature 4</p>
-                <p>Lorem Ipsum</p>
+                <p className="opacity-70">⚡ Power Backup</p>
+                <p className="font-semibold">Available</p>
               </div>
             </div>
           </div>
@@ -202,8 +206,8 @@ export default function PropertyDetailPage({ params }: PropertyDetailPageProps) 
         {/* Right Side (Floor Plan card) */}
         <div className="bg-white text-[#3D3A37] p-6 rounded-2xl h-fit">
           <h3 className="text-lg font-bold mb-2">2D & 3D Floor Plans</h3>
-          <p className="text-sm opacity-70 mb-1">2560 sq.ft. (237.83 sq.m.)</p>
-          <p className="text-sm mb-4">Super Built-up Area | 3 BHK</p>
+          <p className="text-sm opacity-70 mb-1">{property.area}</p>
+          <p className="text-sm mb-4">{property.beds}</p>
           <div className="relative w-full h-40 md:h-48 rounded-xl overflow-hidden mb-4">
             <Image
               src={property.floorPlan}
@@ -212,7 +216,7 @@ export default function PropertyDetailPage({ params }: PropertyDetailPageProps) 
               className="object-cover"
             />
           </div>
-          <p className="text-lg md:text-xl font-bold mb-2">₹ 3 Cr</p>
+          <p className="text-lg md:text-xl font-bold mb-2">{property.price}</p>
           <p className="text-xs opacity-70 mb-4">
             New Launch · Mar ’30 possession
           </p>
