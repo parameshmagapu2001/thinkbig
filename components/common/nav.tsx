@@ -8,28 +8,20 @@ import { FaFacebookF, FaTwitter, FaInstagram, FaLinkedinIn } from "react-icons/f
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
-  const [showNav, setShowNav] = useState(true);
-  const [lastScrollY, setLastScrollY] = useState(0);
+  const [showNav, setShowNav] = useState(true); // visible only at top
 
-  // Handle scroll to hide/show navbar
   useEffect(() => {
     const handleScroll = () => {
-      const currentScrollY = window.scrollY;
-
-      if (currentScrollY > lastScrollY && currentScrollY > 100) {
-        // Scrolling down
-        setShowNav(false);
-      } else {
-        // Scrolling up
+      if (window.scrollY === 0) {
         setShowNav(true);
+      } else {
+        setShowNav(false);
       }
-
-      setLastScrollY(currentScrollY);
     };
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [lastScrollY]);
+  }, []);
 
   return (
     <>
@@ -43,29 +35,27 @@ export default function Navbar() {
           {/* Logo */}
           <Link href="/" className="flex items-center">
             <Image
-              src="/images/logo.svg"
+              src="/images/Logo .svg"
               alt="ThinkBig Logo"
-              width={160}
-              height={50}
+              width={100}
+              height={40}
               className="object-contain"
             />
           </Link>
 
-          {/* Hamburger */}
-<button
-  onClick={() => setOpen(true)}
-  className="flex items-center gap-3 bg-white rounded-full px-4 py-2 shadow-md"
->
-  {/* Text */}
-  <span className="text-sm text-[#3D3A37] font-medium">Menu</span>
+          {/* Hamburger with white background covering text and icon */}
+          <button
+            onClick={() => setOpen(true)}
+            className="flex items-center gap-3 bg-white rounded-full px-5 py-2 shadow-md"
+          >
+            {/* Text */}
+            <span className="text-sm text-[#3D3A37] font-medium">Menu</span>
 
-  {/* Circular black background with white hamburger */}
-  <div className="flex items-center justify-center w-10 h-10 rounded-full bg-black">
-    <Menu size={20} className="text-white" />
-  </div>
-</button>
-
-
+            {/* Circular icon */}
+            <div className="flex items-center justify-center w-10 h-10 rounded-full bg-black">
+              <Menu size={20} className="text-white" />
+            </div>
+          </button>
         </div>
       </nav>
 
@@ -76,14 +66,6 @@ export default function Navbar() {
             {/* Left column */}
             <div className="w-2/3 bg-[#333333] text-white flex flex-col justify-between p-10">
               <div>
-                <Image
-                  src="/images/logo1.svg"
-                  alt="ThinkBig Logo"
-                  width={180}
-                  height={60}
-                  className="mb-12"
-                />
-
                 <ul className="space-y-10 text-4xl md:text-5xl font-semibold tracking-wide">
                   <li>
                     <Link href="/" onClick={() => setOpen(false)}>Home</Link>
@@ -101,7 +83,6 @@ export default function Navbar() {
               </div>
 
               <div>
-                {/* Social Media Icons */}
                 <div className="flex gap-6 mt-10 text-white text-2xl">
                   <Link href="https://facebook.com" target="_blank"><FaFacebookF /></Link>
                   <Link href="https://twitter.com" target="_blank"><FaTwitter /></Link>
@@ -124,19 +105,15 @@ export default function Navbar() {
                 fill
                 className="object-cover"
               />
-<button
-  onClick={() => setOpen(false)}
-  className="absolute top-6 right-6 flex items-center gap-3 bg-white rounded-full px-4 py-2 shadow-md"
->
-  {/* Text */}
-  <span className="text-sm text-[#3D3A37] font-medium">Close</span>
-
-  {/* Circular black background with white X */}
-  <div className="flex items-center justify-center w-10 h-10 rounded-full bg-black">
-    <X size={20} className="text-white" />
-  </div>
-</button>
-
+              <button
+                onClick={() => setOpen(false)}
+                className="absolute top-6 right-6 flex items-center gap-3 bg-white rounded-full px-4 py-2 shadow-md"
+              >
+                <span className="text-sm text-[#3D3A37] font-medium">Close</span>
+                <div className="flex items-center justify-center w-10 h-10 rounded-full bg-black">
+                  <X size={20} className="text-white" />
+                </div>
+              </button>
             </div>
           </div>
         </div>

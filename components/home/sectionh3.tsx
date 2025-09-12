@@ -2,174 +2,114 @@
 
 import { motion, Variants } from "framer-motion";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const properties = [
-  {
-    id: 1,
-    title: "Skyper Pool Apartment",
-    location: "1020 Kokapet",
-    beds: "4 Beds",
-    area: "450 sqft, Apartment",
-    price: "₹20,80,000",
-    image: "/images/property1.svg",
-  },
-  {
-    id: 2,
-    title: "North Dillard Street",
-    location: "Kukatpally",
-    beds: "4 Beds",
-    area: "400 sqft, Commercial",
-    price: "₹20,80,000",
-    image: "/images/property2.svg",
-  },
-  {
-    id: 3,
-    title: "Eaton Garth Penthouse",
-    location: "Financial District",
-    beds: "4 Beds",
-    area: "450 sqft, Villa",
-    price: "₹20,80,000",
-    image: "/images/property3.svg",
-  },
+  { id: 1, title: "Lansum Encanto", location: "Financial District ", beds: "3 & 4 BHK Luxury Apartments", area: "4055 – 5045 Sq.Ft", image: "/images/LansumEncanto.svg" },
+  { id: 2, title: "R One Diamond Towers", location: "Financial District", beds: "2, 3 BHK & 4 BHK luxury Apartments", area: "2765 - 4205 SFT.",  image: "/images/CasaGrand Hanford .svg" },
+  { id: 3, title: "Palais Royale", location: "Financial District", beds: " 4 & 5 BHK Residences", area: "3800 - 6610 SFT. ",  image: "/images/property3.svg" },
+  { id: 4, title: "Evania by AVR", location: "Kokapet", beds: "3.5 & 4 BHK Apartment", area: "3315 SFT. & 3575 SFT.",  image: "/images/Evania by AVR .svg" },
+  { id: 5, title: "Vaishnoi Southwood ", location: "Mamidipally", beds: "4 & 5 BHK ultra luxurious villas", area: "300 to 940 Sq. Yards", image: "/images/property2.svg" },
+  { id: 6, title: "CasaGrand Hanford", location: "Kokapet", beds: "3.5 & 4 BHK Apartments ", area: "3315 SFT. -  3575 SFT.",  image: "/images/CasaGrand Hanford .svg" },
 ];
 
-// Card animation
-const cardVariants: Variants = {
-  hidden: { opacity: 0, y: 50, scaleY: 0.8 },
-  visible: { opacity: 1, y: 0, scaleY: 1 },
+// Parent motion
+const gridVariants: Variants = {
+  hidden: {},
+  visible: {
+    transition: { staggerChildren: 0.15 },
+  },
 };
 
-export default function FeaturedPropertiesWithShowcase() {
+// Card animation (slide + fade)
+const cardVariants: Variants = {
+  hidden: { opacity: 0, y: 40, scale: 0.95 },
+  visible: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.5, ease: "easeOut" } },
+};
+
+export default function FeaturedPropertiesCarousel() {
+  const router = useRouter();
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const prev = () => setCurrentIndex((prev) => (prev > 0 ? prev - 1 : properties.length - 1));
+  const next = () => setCurrentIndex((prev) => (prev < properties.length - 1 ? prev + 1 : 0));
+
+  // Always show 3 cards (loop)
+  const visibleCards = Array.from({ length: 3 }, (_, i) =>
+    properties[(currentIndex + i) % properties.length]
+  );
+
   return (
-    <div className="bg-white text-[#3D3A37]">
-      {/* ================= Featured Properties Section ================= */}
-      <section className="px-6 md:px-[10%] py-16">
-        {/* Heading */}
-        <motion.h5
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: false, amount: 0.5 }}
-          className="text-xl sm:text-2xl md:text-3xl font-bold leading-tight mb-6 text-left"
-        >
-          Featured Properties
-        </motion.h5>
+    <section className="px-4 sm:px-6 md:px-12 py-[-80] bg-white text-[#3D3A37]">
+{/* Title */}
+<motion.h4
+  initial="hidden"
+  whileInView="visible"
+  viewport={{ once: true, amount: 0.4 }}
+  className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-10 px-20 text-left"
+>
+  {"Featured Properties.".split("").map((char, i) => (
+    <motion.span
+      key={i}
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      viewport={{ once: true }}
+      transition={{ delay: i * 0.05, duration: 0.05, ease: "easeOut" }}
+    >
+      {char === " " ? "\u00A0" : char}
+    </motion.span>
+  ))}
+</motion.h4>
 
-        {/* Split text animation for h2 (word by word) */}
-        <motion.h2
+
+      {/* Carousel */}
+      <div className="relative">
+        {/* Cards */}
+        <motion.div
+          className="flex gap-6 justify-center overflow-hidden"
           initial="hidden"
-          whileInView="visible"
-          viewport={{ once: false, amount: 0.5 }}
-          className="text-3xl sm:text-5xl md:text-[110px] lg:text-[120px] font-bold leading-snug mb-14 text-left flex flex-wrap gap-2"
+          animate="visible"
+          variants={gridVariants}
         >
-          {"Select the option you prefer.".split(" ").map((word, i) => (
-            <motion.span
-              key={i}
-              className="inline-block"
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: false, amount: 0.5 }}
-              transition={{ delay: i * 0.15, duration: 0.6, ease: "easeOut" }}
-            >
-              {word}&nbsp;
-            </motion.span>
-          ))}
-        </motion.h2>
-
-        {/* Properties Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {properties.map((property, index) => {
+          {visibleCards.map((property, index) => {
             const isSecond = index % 2 === 1;
             return (
               <motion.div
                 key={property.id}
-                custom={index}
                 variants={cardVariants}
-                initial="hidden"
-                whileInView="visible"
-                transition={{
-                  delay: index * 0.2,
-                  duration: 0.9,
-                  ease: "easeOut",
-                }}
-                viewport={{ once: false, amount: 0.3 }}
-                className={`rounded-2xl overflow-hidden shadow-md border border-gray-200 ${
+                className={`flex-shrink-0 w-full sm:w-[70%] md:w-[30%] rounded-2xl overflow-hidden shadow-lg border border-gray-200 flex flex-col transition ${
                   isSecond ? "bg-[#3D3A37] text-white" : "bg-white text-[#3D3A37]"
                 }`}
               >
-                {/* Image wrapper with padding and border */}
-                <div
-                  className={`p-3 rounded-t-2xl ${
-                    isSecond ? "bg-[#3D3A37]" : "bg-white"
-                  }`}
-                >
-                  <div className="relative w-full h-52 md:h-60 lg:h-66 rounded-xl overflow-hidden border">
-                    <Image
-                      src={property.image}
-                      alt={property.title}
-                      fill
-                      className="object-cover"
-                    />
-                  </div>
+                {/* Image */}
+                <div className="relative w-full h-64 md:h-72 lg:h-80">
+                  <Image
+                    src={property.image}
+                    alt={property.title}
+                    fill
+                    className="object-cover rounded-t-2xl"
+                  />
                 </div>
 
-                {/* Card content */}
-                <div className="p-6 md:p-8 space-y-4">
-                  <h3 className="text-base sm:text-lg md:text-xl font-semibold">
-                    {property.title}
-                  </h3>
-                  <div className="flex items-center gap-2 text-xs sm:text-sm md:text-base opacity-80">
-                    {/* location icon */}
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="h-4 w-4"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M12 11c.828 0 1.5-.672 1.5-1.5S12.828 8 12 8s-1.5.672-1.5 1.5S11.172 11 12 11z"
-                      />
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M12 22s8-4.5 8-11a8 8 0 10-16 0c0 6.5 8 11 8 11z"
-                      />
-                    </svg>
-                    {property.location}
-                  </div>
-
-                  <div className="flex items-center gap-4 text-xs sm:text-sm md:text-base opacity-80">
-                    <div className="flex items-center gap-1">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="h-4 w-4"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M4 10h16M4 6h16M4 14h16M4 18h16"
-                        />
-                      </svg>
-                      {property.beds}
+                {/* Card Content */}
+                <div className="p-6 flex-1 flex flex-col justify-between space-y-4">
+                  <div>
+                    <h3 className="text-lg md:text-xl font-semibold">{property.title}</h3>
+                    <p className="flex items-center gap-2 text-sm opacity-80 mt-1">
+                      📍 {property.location}
+                    </p>
+                    <div className="flex items-center gap-4 text-sm opacity-80 mt-2">
+                      <span>🛏 {property.beds}</span>
+                      <span>{property.area}</span>
                     </div>
-                    <div>{property.area}</div>
                   </div>
 
                   <div className="pt-4 border-t border-gray-300/30 flex items-center justify-between">
-                    <span className="text-base sm:text-lg md:text-xl font-bold">
-                      {property.price}
-                    </span>
                     <button
-                      className={`px-6 py-3 rounded-full text-xs sm:text-sm md:text-base font-medium transition ${
+                      onClick={() => router.push(`/viewproperties/${property.id}`)}
+                      className={`px-5 py-2 rounded-full text-sm font-medium transition ${
                         isSecond
                           ? "bg-white text-[#3D3A37] hover:bg-gray-200"
                           : "bg-[#3D3A37] text-white hover:opacity-90"
@@ -182,48 +122,35 @@ export default function FeaturedPropertiesWithShowcase() {
               </motion.div>
             );
           })}
+        </motion.div>
+
+        {/* Arrows below cards center */}
+        <div className="flex justify-center items-center gap-4 mt-8">
+          <button
+            onClick={prev}
+            className="p-3 bg-gray-200 rounded-full hover:bg-gray-300 transition"
+          >
+            <ChevronLeft size={28} />
+          </button>
+          <button
+            onClick={next}
+            className="p-3 bg-gray-200 rounded-full hover:bg-gray-300 transition"
+          >
+            <ChevronRight size={28} />
+          </button>
         </div>
-      </section>
+      </div>
 
-      {/* ================= Video + Showcase Section ================= */}
-      <section className="w-full bg-white py-20">
-        <div className="container mx-auto px-4 flex flex-col items-center gap-16">
-          {/* Video Card */}
-          <div className="relative w-[300px] h-[180px] md:w-[500px] md:h-[280px] rounded-2xl overflow-hidden shadow-xl bg-black">
-            <motion.div
-              className="absolute inset-0 flex items-center z-0"
-              initial={{ x: "100%" }}
-              animate={{ x: "-100%" }}
-              transition={{ repeat: Infinity, duration: 20, ease: "linear" }}
-            >
-              <h1 className="text-white text-[20px] sm:text-[30px] md:text-[50px] font-bold whitespace-nowrap px-4">
-                BOOK YOUR PROPERTY • BOOK YOUR PROPERTY • BOOK YOUR PROPERTY •
-              </h1>
-            </motion.div>
-
-            <Image
-              src="/images/elysium.svg"
-              alt="Showcase"
-              width={1200}
-              height={600}
-              className="w-full h-auto rounded-3xl object-cover shadow-lg"
-            />
-          </div>
-
-          {/* Image Showcase */}
-          <div className="w-full">
-            <div className="p-[0%]">
-              <Image
-                src="/images/elysium.svg"
-                alt="Showcase"
-                width={1200}
-                height={600}
-                className="w-full h-auto rounded-3xl object-cover shadow-lg"
-              />
-            </div>
-          </div>
-        </div>
-      </section>
-    </div>
+      {/* Showcase Image */}
+      <div className="container mx-auto px-4 flex flex-col items-center mt-16">
+        <Image
+          src="/images/elysium.svg"
+          alt="Showcase"
+          width={1200}
+          height={600}
+          className="w-full h-auto rounded-3xl object-cover shadow-lg"
+        />
+      </div>
+    </section>
   );
 }
