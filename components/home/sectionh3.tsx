@@ -7,12 +7,12 @@ import { useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const properties = [
-  { id: 1, title: "Lansum Encanto", location: "Financial District ", beds: "3 & 4 BHK Luxury Apartments", area: "4055 – 5045 Sq.Ft", image: "/images/LansumEncanto.svg" },
-  { id: 2, title: "R One Diamond Towers", location: "Financial District", beds: "2, 3 BHK & 4 BHK luxury Apartments", area: "2765 - 4205 SFT.",  image: "/images/CasaGrand Hanford .svg" },
-  { id: 3, title: "Palais Royale", location: "Financial District", beds: " 4 & 5 BHK Residences", area: "3800 - 6610 SFT. ",  image: "/images/property3.svg" },
-  { id: 4, title: "Evania by AVR", location: "Kokapet", beds: "3.5 & 4 BHK Apartment", area: "3315 SFT. & 3575 SFT.",  image: "/images/Evania by AVR .svg" },
-  { id: 5, title: "Vaishnoi Southwood ", location: "Mamidipally", beds: "4 & 5 BHK ultra luxurious villas", area: "300 to 940 Sq. Yards", image: "/images/property2.svg" },
-  { id: 6, title: "CasaGrand Hanford", location: "Kokapet", beds: "3.5 & 4 BHK Apartments ", area: "3315 SFT. -  3575 SFT.",  image: "/images/CasaGrand Hanford .svg" },
+  { id: 1, title: "Lansum Encanto", location: "Financial District ", beds: "3 & 4 BHK Luxury Apartments", area: "4055 – 5045 Sq.Ft", image: "/images/Lansum Encanto .svg" },
+  { id: 2, title: "R One Diamond Towers", location: "Financial District", beds: "2, 3 BHK & 4 BHK luxury Apartments", area: "2765 - 4205 SFT.",  image: "/images/R One Diamond Towers .svg" },
+  { id: 3, title: "Palais Royale", location: "Financial District", beds: " 4 & 5 BHK Residences", area: "3800 - 6610 SFT. ",  image: "/images/Palais Royale .svg" },
+  { id: 4, title: "Evania by AVR", location: "Kokapet", beds: "3.5 & 4 BHK Apartment", area: "3315 SFT. & 3575 SFT.",  image: "/images/Evania by AVR  .svg" },
+  { id: 5, title: "Vaishnoi Southwood ", location: "Mamidipally", beds: "4 & 5 BHK ultra luxurious villas", area: "300 to 940 Sq. Yards", image: "/images/Vaishnoi Southwood .svg" },
+  { id: 6, title: "CasaGrand Hanford", location: "Kokapet", beds: "3.5 & 4 BHK Apartments ", area: "3315 SFT. -  3575 SFT.",  image: "/images/CasaGrand Hanford  .svg" },
 ];
 
 // Parent motion
@@ -42,13 +42,13 @@ export default function FeaturedPropertiesCarousel() {
   );
 
   return (
-    <section className="px-4 sm:px-6 md:px-12 py-[-80] bg-white text-[#3D3A37]">
+    <section className="px-4 sm:px-6 md:px-12 py-[-10] bg-white text-[#3D3A37]">
 {/* Title */}
 <motion.h4
   initial="hidden"
   whileInView="visible"
   viewport={{ once: true, amount: 0.4 }}
-  className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-10 px-20 text-left"
+  className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-10 px-17 text-left"
 >
   {"Featured Properties.".split("").map((char, i) => (
     <motion.span
@@ -146,8 +146,8 @@ export default function FeaturedPropertiesCarousel() {
         <Image
           src="/images/elysium.svg"
           alt="Showcase"
-          width={1200}
-          height={600}
+          width={1000}
+          height={400}
           className="w-full h-auto rounded-3xl object-cover shadow-lg"
         />
       </div>

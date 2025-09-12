@@ -10,19 +10,16 @@ export default function Home() {
       <header className="w-full px-6 sm:px-10 py-10 flex justify-end items-center">
         {/* Nav Items - Right */}
         <nav className="flex space-x-5 text-[18px] sm:text-[20px] md:text-[22px] font-medium">
-          <Link href="/" className="hover:text-[#3D3A37] cursor-pointer">
+          <Link href="/" className="underline hover:no-underline cursor-pointer">
             Home
           </Link>
-          <Link href="/about" className="hover:text-[#3D3A37] cursor-pointer">
+          <Link href="/about" className="underline hover:no-underline cursor-pointer">
             About Us
           </Link>
-          <Link href="/buy" className="hover:text-[#3D3A37] cursor-pointer">
+          <Link href="/buy" className="underline hover:no-underline cursor-pointer">
             Buy
           </Link>
-          <Link
-            href="/contact"
-            className="hover:text-[#3D3A37] cursor-pointer"
-          >
+          <Link href="/contact" className="underline hover:no-underline cursor-pointer">
             Get to know us
           </Link>
         </nav>
@@ -47,29 +44,15 @@ export default function Home() {
       {/* === Footer === */}
       <footer className="w-full px-6 sm:px-10 py-6 flex flex-col md:flex-row justify-between items-center gap-6 text-[12px] sm:text-[13px] md:text-[14px]">
         {/* Left: Nav Links */}
-        <nav className="flex flex-wrap justify-center md:justify-start gap-4 font-medium">
-          <Link href="/" className="hover:underline">
-            Home
-          </Link>
-          <Link href="/about" className="hover:underline">
-            About Us
-          </Link>
-          <Link href="/buy" className="hover:underline">
-            Buy
-          </Link>
-          <Link href="/contact" className="hover:underline">
-            Get to know us
-          </Link>
-        </nav>
 
         {/* Center: Made by */}
-        <p className="font-semibold text-center">
+        <p className="font-semibold text-left">
           Website made by —{" "}
           <a
             href="https://techgyinnovations.com/"
             target="_blank"
             rel="noopener noreferrer"
-            className="hover:underline"
+            className="underline hover:no-underline"
           >
             Tech<span className="text-red-600">G</span>y Innovations
           </a>
