@@ -7,12 +7,12 @@ import { useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const properties = [
-  { id: 1, title: "Lansum Encanto", location: "Financial District ", beds: "3 & 4 BHK Luxury Apartments", area: "4055 – 5045 Sq.Ft", image: "/images/LansumEncanto.svg" },
-  { id: 2, title: "R One Diamond Towers", location: "Financial District", beds: "2, 3 BHK & 4 BHK luxury Apartments", area: "2765 - 4205 SFT.",  image: "/images/ROneDiamondTowers .svg" },
-  { id: 3, title: "Palais Royale", location: "Financial District", beds: " 4 & 5 BHK Residences", area: "3800 - 6610 SFT. ",  image: "/images/PalaisRoyale.svg" },
-  { id: 4, title: "Evania by AVR", location: "Kokapet", beds: "3.5 & 4 BHK Apartment", area: "3315 SFT. & 3575 SFT.",  image: "/images/EvaniabyAVR.svg" },
-  { id: 5, title: "Vaishnoi Southwood ", location: "Mamidipally", beds: "4 & 5 BHK ultra luxurious villas", area: "300 to 940 Sq. Yards", image: "/images/VaishnoiSouthwood.svg" },
-  { id: 6, title: "CasaGrand Hanford", location: "Kokapet", beds: "3.5 & 4 BHK Apartments ", area: "3315 SFT. -  3575 SFT.",  image: "/images/CasaGrandHanford.svg" },
+  { id: 1, title: "Lansum Encanto", location: "Financial District ", beds: "3 & 4 BHK Luxury Apartments", area: "4055 – 5045 Sq.Ft", image: "/images/L.svg" },
+  { id: 2, title: "R One Diamond Towers", location: "Financial District", beds: "2, 3 BHK & 4 BHK luxury Apartments", area: "2765 - 4205 SFT.",  image: "/images/r.svg" },
+  { id: 3, title: "Palais Royale", location: "Financial District", beds: " 4 & 5 BHK Residences", area: "3800 - 6610 SFT. ",  image: "/images/p.svg" },
+  { id: 4, title: "Evania by AVR", location: "Kokapet", beds: "3.5 & 4 BHK Apartment", area: "3315 SFT. & 3575 SFT.",  image: "/images/e.svg" },
+  { id: 5, title: "Vaishnoi Southwood ", location: "Mamidipally", beds: "4 & 5 BHK ultra luxurious villas", area: "300 to 940 Sq. Yards", image: "/images/v.svg" },
+  { id: 6, title: "CasaGrand Hanford", location: "Kokapet", beds: "3.5 & 4 BHK Apartments ", area: "3315 SFT. -  3575 SFT.",  image: "/images/c.svg" },
 ];
 
 // Parent motion
