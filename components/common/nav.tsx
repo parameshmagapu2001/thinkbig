@@ -52,13 +52,20 @@ export default function Navbar() {
           </Link>
 
           {/* Hamburger */}
-          <button
-            onClick={() => setOpen(true)}
-            className="flex items-center gap-2 bg-white rounded-full px-4 py-2 shadow-md"
-          >
-            <span className="text-sm text-[#3D3A37] font-medium">Menu</span>
-            <Menu size={25} className="text-[#3D3A37]" />
-          </button>
+<button
+  onClick={() => setOpen(true)}
+  className="flex items-center gap-3 bg-white rounded-full px-4 py-2 shadow-md"
+>
+  {/* Text */}
+  <span className="text-sm text-[#3D3A37] font-medium">Menu</span>
+
+  {/* Circular black background with white hamburger */}
+  <div className="flex items-center justify-center w-10 h-10 rounded-full bg-black">
+    <Menu size={20} className="text-white" />
+  </div>
+</button>
+
+
         </div>
       </nav>
 
@@ -77,7 +84,7 @@ export default function Navbar() {
                   className="mb-12"
                 />
 
-                <ul className="space-y-10 text-5xl md:text-6xl font-semibold tracking-wide">
+                <ul className="space-y-10 text-4xl md:text-5xl font-semibold tracking-wide">
                   <li>
                     <Link href="/" onClick={() => setOpen(false)}>Home</Link>
                   </li>
@@ -117,13 +124,19 @@ export default function Navbar() {
                 fill
                 className="object-cover"
               />
-              <button
-                onClick={() => setOpen(false)}
-                className="absolute top-6 right-6 flex items-center gap-2 bg-white rounded-full px-4 py-2 shadow-md"
-              >
-                <span className="text-sm text-[#3D3A37] font-medium">Close</span>
-                <X size={20} className="text-[#3D3A37]" />
-              </button>
+<button
+  onClick={() => setOpen(false)}
+  className="absolute top-6 right-6 flex items-center gap-3 bg-white rounded-full px-4 py-2 shadow-md"
+>
+  {/* Text */}
+  <span className="text-sm text-[#3D3A37] font-medium">Close</span>
+
+  {/* Circular black background with white X */}
+  <div className="flex items-center justify-center w-10 h-10 rounded-full bg-black">
+    <X size={20} className="text-white" />
+  </div>
+</button>
+
             </div>
           </div>
         </div>

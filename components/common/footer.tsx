@@ -53,7 +53,7 @@ export default function Home() {
 
       {/* Hero Text */}
       <main className="px-6 sm:px-10 py-8 flex justify-center md:justify-center">
-        <h1 className="font-bold leading-tight text-[#3D3A37] text-center text-[90px] sm:text-[110px] md:text-[140px] lg:text-[160px] tracking-tight">
+        <h1 className="font-bold leading-tight text-[#3D3A37] text-center text-[190px] sm:text-[110px] md:text-[140px] lg:text-[220px] tracking-tight">
           Think Big
         </h1>
       </main>

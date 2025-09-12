@@ -27,7 +27,7 @@ export default function AboutSection() {
           clearInterval(interval);
           setTypingDone(true);
         }
-      }, 15);
+      }, 8);
 
       return () => clearInterval(interval);
     }
