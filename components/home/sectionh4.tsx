@@ -2,7 +2,7 @@
 
 import React from "react";
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { motion, circOut } from "framer-motion";
 
 type Direction = "top" | "right" | "left" | "bottom";
 
@@ -22,7 +22,7 @@ const getVariants = (direction: Direction) => {
       opacity: 1,
       transition: {
         duration: 1.2,
-        ease: "circOut",
+        ease: circOut, // ✅ fixed (typed easing function)
       },
     },
   };
@@ -32,12 +32,12 @@ export default function WhyThinkBig() {
   return (
     <section className="w-full bg-white py-0 sm:py-8">
       <div className="max-w-[1500px] mx-auto px-4 sm:px-6">
-        {/* Headline - Fixed for mobile */}
+        {/* Headline */}
         <div className="overflow-visible w-full mb-8 sm:mb-12 text-center">
           <motion.h2
             initial={{ y: -50, opacity: 0 }}
             whileInView={{ y: 0, opacity: 1 }}
-            transition={{ duration: 1, ease: "circOut" }}
+            transition={{ duration: 1, ease: circOut }}
             viewport={{ once: true, margin: "-50px" }}
             className="font-bold text-[#3d3a37] text-[36px] xs:text-[42px] sm:text-[60px] md:text-[80px] lg:text-[100px] xl:text-[120px] leading-[1.1] sm:leading-tight"
           >
@@ -58,18 +58,17 @@ export default function WhyThinkBig() {
             { type: "image", src: "/images/card4.svg", alt: "Towers", dir: "top" },
           ].map((card, idx) => (
             <motion.div
-  key={idx}
-  variants={getVariants(card.dir as Direction)}
-  initial="hidden"
-  whileInView="visible"
-  viewport={{ once: true, amount: 0.3 }}
-  className={`w-full h-[300px] sm:h-[400px] md:h-[450px] lg:h-[600px] xl:h-[692px]
-              rounded-[24px] sm:rounded-[34px] shadow-lg relative mx-auto flex
-              items-center justify-center bg-[#3D3A37] text-white
-              p-6 sm:p-8 
-              ${card.hideMobile ? "hidden sm:flex" : ""}`}
->
-
+              key={idx}
+              variants={getVariants(card.dir as Direction)}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.3 }}
+              className={`w-full h-[300px] sm:h-[400px] md:h-[450px] lg:h-[600px] xl:h-[692px]
+                          rounded-[24px] sm:rounded-[34px] shadow-lg relative mx-auto flex
+                          items-center justify-center bg-[#3D3A37] text-white
+                          p-6 sm:p-8 
+                          ${card.hideMobile ? "hidden sm:flex" : ""}`}
+            >
               {card.type === "image" ? (
                 <Image
                   src={card.src!}
