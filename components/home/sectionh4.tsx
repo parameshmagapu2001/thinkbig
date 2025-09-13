@@ -2,7 +2,7 @@
 
 import React from "react";
 import Image from "next/image";
-import { motion, circOut } from "framer-motion";
+import { motion } from "framer-motion";
 
 type Direction = "top" | "right" | "left" | "bottom";
 
@@ -22,7 +22,7 @@ const getVariants = (direction: Direction) => {
       opacity: 1,
       transition: {
         duration: 1.2,
-        ease: circOut,
+        ease: "circOut",
       },
     },
   };
@@ -31,23 +31,22 @@ const getVariants = (direction: Direction) => {
 export default function WhyThinkBig() {
   return (
     <section className="w-full bg-white py-0 sm:py-8">
-
       <div className="max-w-[1500px] mx-auto px-4 sm:px-6">
-        {/* Headline */}
-        <div className="overflow-hidden w-full mb-10 sm:mb-16 text-center">
+        {/* Headline - Fixed for mobile */}
+        <div className="overflow-visible w-full mb-8 sm:mb-12 text-center">
           <motion.h2
-            initial={{ y: -100, opacity: 0 }}
+            initial={{ y: -50, opacity: 0 }}
             whileInView={{ y: 0, opacity: 1 }}
-            transition={{ duration: 1, ease: circOut }}
-            viewport={{ once: true }}
-            className="font-bold text-[#3d3a37] text-4xl sm:text-6xl md:text-[80px] lg:text-[120px] leading-tight"
+            transition={{ duration: 1, ease: "circOut" }}
+            viewport={{ once: true, margin: "-50px" }}
+            className="font-bold text-[#3d3a37] text-[36px] xs:text-[42px] sm:text-[60px] md:text-[80px] lg:text-[100px] xl:text-[120px] leading-[1.1] sm:leading-tight"
           >
             Why ThinkBig?
           </motion.h2>
         </div>
 
         {/* Grid of Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-10 justify-center items-center">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 md:gap-8 lg:gap-10 justify-center items-center">
           {[
             { type: "image", src: "/images/card1.svg", alt: "Balcony View", dir: "left" },
             { type: "text", text: "Access to High-End Real Estate", dir: "right", hideMobile: true },

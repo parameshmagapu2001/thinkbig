@@ -114,10 +114,10 @@ export default async function PropertyDetailPage({ params }: PropertyDetailPageP
             <p className="opacity-80 flex items-center gap-2 mb-4 text-sm md:text-base">
               📍 {property.location}
             </p>
-            <p className="text-xl md:text-2xl font-bold mt-4">
+            {/* <p className="text-xl md:text-2xl font-bold mt-4">
               {property.price}
-            </p>
-            <p className="text-xs md:text-sm opacity-80">Starting Price</p>
+            </p> */}
+            {/* <p className="text-xs md:text-sm opacity-80">Starting Price</p> */}
           </div>
 
           <button className="mt-6 flex items-center justify-center gap-2 px-4 md:px-6 py-3 bg-white text-[#3D3A37] rounded-full font-medium hover:bg-gray-200 transition">

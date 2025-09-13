@@ -115,26 +115,27 @@ export default function Page() {
       </section>
 
       {/* ================== Call to Action Section ================== */}
-      <section className="w-full min-h-[40vh] sm:min-h-[50vh] bg-white flex flex-col items-start justify-center px-4 sm:px-8 py-0 sm:py-15">
-        {/* Small text */}
-        <div className="space-y-1 sm:space-y-2 mb-4 sm:mb-6">
-          <p className="text-gray-700 text-base sm:text-lg md:text-2xl">
-            Interested in premium properties?
-          </p>
-          <p className="text-gray-700 text-base sm:text-lg md:text-2xl">
-            Reserve one by using our platform.
-          </p>
-        </div>
+<section className="w-full min-h-[40vh] sm:min-h-[50vh] bg-white flex flex-col items-start justify-center px-4 sm:px-8 pt-20 sm:pt-28 pb-0">
+  {/* Small text */}
+  <div className="space-y-1 sm:space-y-2 mb-4 sm:mb-6">
+    <p className="text-gray-700 text-base sm:text-lg md:text-2xl">
+      Interested in premium properties?
+    </p>
+    <p className="text-gray-700 text-base sm:text-lg md:text-2xl">
+      Reserve one by using our platform.
+    </p>
+  </div>
 
-        {/* Large horizontal moving text */}
-        <div className="overflow-hidden w-full">
-          <motion.h1
-            className="font-bold text-[#3d3a37] text-4xl sm:text-6xl md:text-[120px] text-center whitespace-nowrap leading-none"
-          >
-            Book your property
-          </motion.h1>
-        </div>
-      </section>
+  {/* Large horizontal moving text */}
+  <div className="overflow-hidden w-full">
+    <motion.h1
+      className="font-bold text-[#3d3a37] text-4xl sm:text-6xl md:text-[120px] text-center whitespace-nowrap leading-none"
+    >
+      Book your property
+    </motion.h1>
+  </div>
+</section>
+
     </>
   );
 }
