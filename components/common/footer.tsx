@@ -150,7 +150,7 @@ export default function Home() {
 
 
       {/* === Navigation Hyperlinks (Moved Down) === */}
-      <header className="w-full px-4 sm:px-10 py-6 sm:py-10 flex justify-end items-center">
+      {/* <header className="w-full px-4 sm:px-10 py-6 sm:py-10 flex justify-end items-center">
         <nav className="flex space-x-3 sm:space-x-5 text-[16px] sm:text-[20px] md:text-[22px] font-medium">
           <Link href="/" className="underline hover:no-underline cursor-pointer">
             Home
@@ -165,7 +165,7 @@ export default function Home() {
             Get to know us
           </Link>
         </nav>
-      </header>
+      </header> */}
 
       {/* === Social Row ===
       <div className="w-full px-4 sm:px-10 flex justify-start items-center py-2">
