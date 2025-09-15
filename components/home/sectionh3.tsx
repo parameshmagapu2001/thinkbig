@@ -149,15 +149,15 @@ export default function FeaturedPropertiesCarousel() {
       </div>
 
       {/* Showcase Image */}
-      {/* <div className="container mx-auto px-2 sm:px-4 flex flex-col items-center mt-12 sm:mt-16">
-        <Image
+     <div className="container mx-auto px-2 sm:px-4 flex flex-col items-center mt-12 sm:mt-16">
+       {/*  <Image
           src="/images/elysium.svg"
           alt="Showcase"
           width={1000}
           height={400}
           className="w-full max-w-full sm:max-w-5xl h-auto rounded-xl sm:rounded-3xl object-cover shadow-md sm:shadow-lg"
-        />
-      </div> */}
+        />*/}
+      </div>
     </section>
   );
 }

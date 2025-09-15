@@ -68,18 +68,16 @@ export default function Home() {
 
 
       {/* ================== Call to Action Section ================== */}
-      <section className="w-full min-h-[30vh] bg-white flex flex-col justify-center px-4 sm:px-8 py-10">
-        <div className="overflow-hidden w-full">
-          <motion.h1
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: "easeOut" }}
-            viewport={{ once: true, amount: 0.4 }}
-            className="font-bold text-[#3d3a37] text-3xl sm:text-5xl md:text-6xl lg:text-7xl text-center leading-tight"
-          >
-            REACH OUT TO US
-          </motion.h1>
-        </div>
+      <section className="w-full min-h-[10vh] bg-white flex flex-col justify-center px-4 sm:px-8 pb-10">
+
+    <h1
+  className="font-bold text-[#3d3a37] 
+             text-2xl sm:text-4xl md:text-5xl lg:text-6xl 
+             text-center leading-tight"
+>
+  REACH OUT TO US
+</h1>
+
       </section>
      
       {/* === Enquiry Form Section (Now at Top) === */}
