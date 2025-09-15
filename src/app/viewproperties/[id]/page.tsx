@@ -216,7 +216,7 @@ export default async function PropertyDetailPage({ params }: PropertyDetailPageP
               className="object-cover"
             />
           </div>
-          <p className="text-lg md:text-xl font-bold mb-2">{property.price}</p>
+          {/* <p className="text-lg md:text-xl font-bold mb-2">{property.price}</p> */}
           <p className="text-xs opacity-70 mb-4">
             New Launch · Mar ’30 possession
           </p>

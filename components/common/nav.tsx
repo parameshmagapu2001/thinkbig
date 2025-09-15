@@ -48,7 +48,7 @@ export default function Navbar() {
     </Link>
 
     {/* Hamburger */}
-    {/* <button
+    <button
       onClick={() => setOpen(true)}
       className="flex items-center gap-3 bg-white rounded-full px-4 py-2 shadow-md"
     >
@@ -56,7 +56,7 @@ export default function Navbar() {
       <div className="flex items-center justify-center w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-black">
         <Menu size={18} className="text-white sm:text-white" />
       </div>
-    </button> */}
+    </button>
   </div>
 </nav>
 

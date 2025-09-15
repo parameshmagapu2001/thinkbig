@@ -22,7 +22,7 @@ const getVariants = (direction: Direction) => {
       opacity: 1,
       transition: {
         duration: 1.2,
-        ease: circOut, // ✅ fixed (typed easing function)
+        ease: circOut,
       },
     },
   };
@@ -45,17 +45,13 @@ export default function WhyThinkBig() {
           </motion.h2>
         </div>
 
-        {/* Grid of Cards */}
+        {/* Grid of Image Cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 md:gap-8 lg:gap-10 justify-center items-center">
           {[
-            { type: "image", src: "/images/card1.svg", alt: "Balcony View", dir: "left" },
-            { type: "text", text: "Access to High-End Real Estate", dir: "right", hideMobile: true },
-            { type: "text", text: "Backed by Trusted Developers", dir: "left", hideMobile: true },
-            { type: "image", src: "/images/card2.svg", alt: "Towers", dir: "top" },
-            { type: "image", src: "/images/card3.svg", alt: "Villa", dir: "top" },
-            { type: "text", text: "24×7 Market Analysis & Survey", dir: "right", hideMobile: true },
-            { type: "text", text: "Professional Team of Experts", dir: "left", hideMobile: true },
-            { type: "image", src: "/images/card4.svg", alt: "Towers", dir: "top" },
+            { src: "/images/card1.svg", alt: "Balcony View", dir: "left" },
+            { src: "/images/card2.svg", alt: "Towers", dir: "top" },
+            { src: "/images/card3.svg", alt: "Villa", dir: "top" },
+            { src: "/images/card4.svg", alt: "Towers", dir: "top" },
           ].map((card, idx) => (
             <motion.div
               key={idx}
@@ -63,25 +59,16 @@ export default function WhyThinkBig() {
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, amount: 0.3 }}
-              className={`w-full h-[300px] sm:h-[400px] md:h-[450px] lg:h-[600px] xl:h-[692px]
-                          rounded-[24px] sm:rounded-[34px] shadow-lg relative mx-auto flex
-                          items-center justify-center bg-[#3D3A37] text-white
-                          p-6 sm:p-8 
-                          ${card.hideMobile ? "hidden sm:flex" : ""}`}
+              className="w-full h-[300px] sm:h-[400px] md:h-[450px] lg:h-[600px] xl:h-[692px]
+                         rounded-[24px] sm:rounded-[34px] shadow-lg relative mx-auto"
             >
-              {card.type === "image" ? (
-                <Image
-                  src={card.src!}
-                  alt={card.alt!}
-                  fill
-                  className="object-cover rounded-[24px] sm:rounded-[34px]"
-                  priority
-                />
-              ) : (
-                <h2 className="text-xl sm:text-2xl lg:text-3xl font-semibold text-center">
-                  {card.text}
-                </h2>
-              )}
+              <Image
+                src={card.src}
+                alt={card.alt}
+                fill
+                className="object-cover rounded-[24px] sm:rounded-[34px]"
+                priority
+              />
             </motion.div>
           ))}
         </div>

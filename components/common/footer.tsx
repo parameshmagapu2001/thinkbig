@@ -3,6 +3,7 @@
 import { useState, useEffect, ChangeEvent, FormEvent } from "react";
 import { Twitter, Instagram, Youtube, Facebook } from "lucide-react";
 import Link from "next/link";
+import { motion } from "framer-motion";
 
 export default function Home() {
   // ===== Form State =====
@@ -64,88 +65,92 @@ export default function Home() {
 
   return (
     <div className="font-clash bg-white text-[#3D3A37] flex flex-col">
-      {/* === Enquiry Form Section (Now at Top) === */}
-      {/* === Enquiry Form Section (Now at Top) === */}
-<section className="bg-[#fffffff] px-4 sm:px-6 md:px-10 lg:px-20 pt-0 pb-14" id="form">
-  <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
-    {/* Left Content */}
-    <div className="text-center md:text-left space-y-5">
-      <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-[2.7rem] font-medium text-black leading-tight">
-        REACH OUT TO US
-        <br />
-      </h2>
-      <p className="text-[#444] text-base leading-relaxed max-w-md mx-auto md:mx-0">
-        Register your interest below and our team will reach to you
-      </p>
-    </div>
 
 
-          {/* Form */}
-          <form
-            onSubmit={handleSubmit}
-            className="w-full max-w-md mx-auto space-y-6 px-6 py-8 bg-[#f8f9fa] rounded-md shadow"
+      {/* ================== Call to Action Section ================== */}
+      <section className="w-full min-h-[30vh] bg-white flex flex-col justify-center px-4 sm:px-8 py-10">
+        <div className="overflow-hidden w-full">
+          <motion.h1
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            viewport={{ once: true, amount: 0.4 }}
+            className="font-bold text-[#3d3a37] text-3xl sm:text-5xl md:text-6xl lg:text-7xl text-center leading-tight"
           >
-            <input
-              type="text"
-              name="full_name"
-              value={form.full_name}
-              onChange={handleChange}
-              placeholder="Full Name"
-              className="w-full border-b border-gray-300 focus:border-black focus:ring-0 text-[16px] py-2"
-            />
-            {errors.full_name && <p className="text-red-500 text-sm">{errors.full_name}</p>}
-
-            <div className="flex items-center border-b border-gray-300 focus-within:border-black">
-              <span className="text-[18px] font-semibold text-black pr-3">+91</span>
-              <input
-                type="tel"
-                name="phone"
-                value={form.phone}
-                onChange={handleChange}
-                placeholder="Your Phone Number*"
-                className="flex-1 border-none focus:ring-0 text-[16px] py-2"
-              />
-            </div>
-            {errors.phone && <p className="text-red-500 text-sm">{errors.phone}</p>}
-
-            <input
-              type="email"
-              name="email"
-              value={form.email}
-              onChange={handleChange}
-              placeholder="Email Address"
-              className="w-full border-b border-gray-300 focus:border-black focus:ring-0 text-[16px] py-2"
-            />
-            {errors.email && <p className="text-red-500 text-sm">{errors.email}</p>}
-
-            <div>
-              <label className="block text-sm text-black mb-1">
-                What is {captcha.a} + {captcha.b}?
-              </label>
-              <input
-                type="text"
-                name="captcha"
-                value={form.captcha}
-                onChange={handleChange}
-                placeholder="Enter answer"
-                className="w-full border-b border-gray-300 focus:border-black focus:ring-0 text-[16px] py-2"
-              />
-              {errors.captcha && <p className="text-red-500 text-sm">{errors.captcha}</p>}
-            </div>
-
-            <button
-              type="submit"
-              disabled={loading}
-              className="w-full bg-[#ecc482] hover:bg-[#e2b56d] text-black font-semibold text-[17px] py-3 rounded-full shadow-md transition-all"
-            >
-              {loading ? "Submitting..." : "Enquire Now"}
-            </button>
-          </form>
+            REACH OUT TO US
+          </motion.h1>
         </div>
       </section>
+     
+      {/* === Enquiry Form Section (Now at Top) === */}
+<section className="bg-[#ffffff] px-4 sm:px-6 md:px-10 lg:px-20 pt-0 pb-14" id="form">
+  <div className="max-w-4xl mx-auto flex justify-center">
+    <form
+      onSubmit={handleSubmit}
+      className="w-full max-w-md space-y-6 px-6 py-8 bg-[#f8f9fa] rounded-md shadow"
+    >
+      <input
+        type="text"
+        name="full_name"
+        value={form.full_name}
+        onChange={handleChange}
+        placeholder="Full Name"
+        className="w-full border-b border-gray-300 focus:border-black focus:ring-0 text-[16px] py-2"
+      />
+      {errors.full_name && <p className="text-red-500 text-sm">{errors.full_name}</p>}
+
+      <div className="flex items-center border-b border-gray-300 focus-within:border-black">
+        <span className="text-[18px] font-semibold text-black pr-3">+91</span>
+        <input
+          type="tel"
+          name="phone"
+          value={form.phone}
+          onChange={handleChange}
+          placeholder="Your Phone Number*"
+          className="flex-1 border-none focus:ring-0 text-[16px] py-2"
+        />
+      </div>
+      {errors.phone && <p className="text-red-500 text-sm">{errors.phone}</p>}
+
+      <input
+        type="email"
+        name="email"
+        value={form.email}
+        onChange={handleChange}
+        placeholder="Email Address"
+        className="w-full border-b border-gray-300 focus:border-black focus:ring-0 text-[16px] py-2"
+      />
+      {errors.email && <p className="text-red-500 text-sm">{errors.email}</p>}
+
+      <div>
+        <label className="block text-sm text-black mb-1">
+          What is {captcha.a} + {captcha.b}?
+        </label>
+        <input
+          type="text"
+          name="captcha"
+          value={form.captcha}
+          onChange={handleChange}
+          placeholder="Enter answer"
+          className="w-full border-b border-gray-300 focus:border-black focus:ring-0 text-[16px] py-2"
+        />
+        {errors.captcha && <p className="text-red-500 text-sm">{errors.captcha}</p>}
+      </div>
+
+      <button
+        type="submit"
+        disabled={loading}
+        className="w-full bg-[#ecc482] hover:bg-[#e2b56d] text-black font-semibold text-[17px] py-3 rounded-full shadow-md transition-all"
+      >
+        {loading ? "Submitting..." : "Enquire Now"}
+      </button>
+    </form>
+  </div>
+</section>
+
 
       {/* === Navigation Hyperlinks (Moved Down) === */}
-      {/* <header className="w-full px-4 sm:px-10 py-6 sm:py-10 flex justify-end items-center">
+      <header className="w-full px-4 sm:px-10 py-6 sm:py-10 flex justify-end items-center">
         <nav className="flex space-x-3 sm:space-x-5 text-[16px] sm:text-[20px] md:text-[22px] font-medium">
           <Link href="/" className="underline hover:no-underline cursor-pointer">
             Home
@@ -160,7 +165,7 @@ export default function Home() {
             Get to know us
           </Link>
         </nav>
-      </header> */}
+      </header>
 
       {/* === Social Row ===
       <div className="w-full px-4 sm:px-10 flex justify-start items-center py-2">
@@ -192,9 +197,7 @@ export default function Home() {
       <a href="https://www.youtube.com/@ThinkBigPropertyManagement/" target="_blank" rel="noopener noreferrer" className="w-9 h-9 flex items-center justify-center rounded-full bg-black hover:bg-gray-800 transition">
         <Youtube size={16} className="text-white" />
       </a>
-      <a href="https://twitter.com/ThinkBigPropMgmt" target="_blank" rel="noopener noreferrer" className="w-9 h-9 flex items-center justify-center rounded-full bg-black hover:bg-gray-800 transition">
-        <Twitter size={16} className="text-white" />
-      </a>
+     
     </div>
 
     {/* Address */}
